@@ -26,12 +26,19 @@ FooResponse
 FooService
 - call: FooRequest -> FooResponse
 
+# Alias
 
+ItemAlias=Item
 
-
-# TypeAlias
-
-# ServiceAlias
+FooRequestAlias=FooRequest
+- cAuth=auth
+- rAll=removeAll
+- items: ItemAlias
 
 FooServiceAlias=FooService
 - callMe=call: FooRequestAlias -> FooResponseAlias
+
+# Alias
+
+FooServiceAlias2=FooService
+
