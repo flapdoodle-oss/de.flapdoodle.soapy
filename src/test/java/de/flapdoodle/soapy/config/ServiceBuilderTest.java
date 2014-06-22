@@ -61,7 +61,7 @@ public class ServiceBuilderTest {
             .methods(new MethodAliasBuilder()
                 .name("fooBar")
                 .sourceMethod(method.name())
-                .type(new TypeAliasBuilder()
+                .response(new TypeAliasBuilder()
                     .name("fooResponse")
                     .sourceType(response.name())
                     .property(new PropertyAliasBuilder()

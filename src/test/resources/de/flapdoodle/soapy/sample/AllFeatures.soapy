@@ -1,0 +1,37 @@
+# Types
+
+ClientID->String(new de.flapdoodle.soapy.sample.ClientID(it)|it.asString())
+
+Status->de.flapdoodle.soapy.sample.Status
+
+Item
+- id: int
+? name: String
+
+WithClientId
+- clientID: ClientID
+
+CommonRequest
+- auth: String
+
+FooRequest+CommonRequest,WithClientId
+- removeAll: boolean
++ items: Item
+
+FooResponse
+- status: Status
+
+# Service
+
+FooService
+- call: FooRequest -> FooResponse
+
+
+
+
+# TypeAlias
+
+# ServiceAlias
+
+FooServiceAlias=FooService
+- callMe=call: FooRequestAlias -> FooResponseAlias

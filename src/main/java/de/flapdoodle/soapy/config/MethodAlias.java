@@ -16,19 +16,21 @@
  */
 package de.flapdoodle.soapy.config;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
 
 public class MethodAlias {
 
     private final Name<MethodAlias> name;
     private final Name<Method> sourceMethod;
-    private final ImmutableList<TypeAlias> types;
-
-    public MethodAlias(Name<MethodAlias> name, Name<Method> sourceMethod, ImmutableList<TypeAlias> types) {
+    private final Optional<TypeAlias> request;
+    private final Optional<TypeAlias> response;
+    
+    public MethodAlias(Name<MethodAlias> name, Name<Method> sourceMethod, Optional<TypeAlias> request,Optional<TypeAlias> response) {
         this.name = Preconditions.checkNotNull(name);
         this.sourceMethod = Preconditions.checkNotNull(sourceMethod);
-        this.types = Preconditions.checkNotNull(types);
+        this.request = Preconditions.checkNotNull(request);
+        this.response = Preconditions.checkNotNull(response);
     }
 
     public Name<MethodAlias> name() {
@@ -39,8 +41,12 @@ public class MethodAlias {
         return sourceMethod;
     }
 
-    public ImmutableList<TypeAlias> types() {
-        return types;
+    public Optional<TypeAlias> request() {
+        return request;
+    }
+    
+    public Optional<TypeAlias> response() {
+        return response;
     }
     
     

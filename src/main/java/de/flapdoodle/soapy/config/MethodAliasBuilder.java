@@ -22,15 +22,13 @@
  */
 package de.flapdoodle.soapy.config;
 
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.google.common.base.Optional;
 
 public class MethodAliasBuilder {
     private Name<MethodAlias> name;
     private Name<Method> sourceMethod;
-    private final List<TypeAlias> types=Lists.newArrayList();
+    private Optional<TypeAlias> request=Optional.absent();
+    private Optional<TypeAlias> response=Optional.absent();
 
     public MethodAliasBuilder name(String name) {
         this.name = Name.of(MethodAlias.class, name);
@@ -42,12 +40,17 @@ public class MethodAliasBuilder {
         return this;
     }
 
-    public MethodAliasBuilder type(TypeAlias type) {
-        this.types.add(type);
+    public MethodAliasBuilder request(TypeAlias request) {
+        this.request = Optional.of(request);
+        return this;
+    }
+
+    public MethodAliasBuilder response(TypeAlias response) {
+        this.response = Optional.of(response);
         return this;
     }
 
     public MethodAlias build() {
-        return new MethodAlias(name, sourceMethod, ImmutableList.copyOf(types));
+        return new MethodAlias(name, sourceMethod, request, response);
     }
 }
