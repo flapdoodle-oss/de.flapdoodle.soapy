@@ -55,7 +55,7 @@ public class ServiceBuilderTest {
             .method(method)
             .build();
         
-        new ServiceAliasBuilder()
+        ServiceAlias serviceAlias = new ServiceAliasBuilder()
             .name("alias")
             .sourceService(service.name())
             .methods(new MethodAliasBuilder()
